@@ -23,6 +23,8 @@ export class PromotionAdsService {
       // observer.complete()
       let counter = 0
       let adsTimer = setInterval(()=>{
+        console.log('interval');
+
         if (counter == this.adsList.length){
           observer.complete()
           // clearInterval(adsTimer)
@@ -33,6 +35,13 @@ export class PromotionAdsService {
         observer.next(this.adsList[counter])
         counter++
       }, intervalSeconds*1000)
+      return {
+        unsubscribe(){
+          clearInterval(adsTimer)
+          console.log('in obs unsubscribed');
+
+        }
+      }
     })
     return addsObservable
   }

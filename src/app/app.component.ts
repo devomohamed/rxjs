@@ -8,6 +8,7 @@ import { PromotionAdsService } from './services/promotion-ads.service';
 })
 export class AppComponent implements OnInit {
   title = 'rxjs';
+  myObs:any
   constructor(private promoAds:PromotionAdsService) { }
   ngOnInit(): void {
     let observer = {
@@ -15,7 +16,10 @@ export class AppComponent implements OnInit {
       error: (error:string) => console.log(error),
       complete: () => console.log('complete')
     }
-    this.promoAds.getScheduledAds(5).subscribe(observer)
+    this.myObs = this.promoAds.getScheduledAds(1).subscribe(observer)
+  }
 
+  ngOnDestroy(): void {
+    this.myObs.unsubscribe()
   }
 }
