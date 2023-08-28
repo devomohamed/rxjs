@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PromotionAdsService } from './services/promotion-ads.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,11 @@ export class AppComponent implements OnInit {
       error: (error:string) => console.log(error),
       complete: () => console.log('complete')
     }
-    this.myObs = this.promoAds.getScheduledAds(1).subscribe(observer)
+    // this.myObs = this.promoAds.getScheduledAds(1).subscribe(observer)
+    // this.myObs = this.promoAds.getSerialAds().subscribe(observer)
+    this.myObs = this.promoAds.getSerialAds().pipe(filter(ad=>ad.includes('sale'))).subscribe(observer)
+
+
   }
 
   ngOnDestroy(): void {

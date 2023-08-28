@@ -1,0 +1,8 @@
+<nav>
+  <h1>Welcome</h1>
+  <div class="links">
+    <button>Home</button>
+    <button [disabled]="isUserLogged" (click)="login()">login</button>
+    <button [disabled]="!isUserLogged" (click)="logout()">logout</button>
+  </div>
+</nav>

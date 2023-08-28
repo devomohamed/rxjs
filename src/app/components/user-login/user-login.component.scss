@@ -1,0 +1,20 @@
+nav{
+  display: flex;
+  justify-content: space-between;
+  .links{
+    display: flex;
+    button{
+      border: none;
+      margin: 0 7px;
+      padding: 0px 10px;
+      background-color: aqua;
+      color: white;
+      cursor: pointer;
+      height: 36px;
+      &:disabled{
+        opacity: 0.5;
+        // background-color: red;
+      }
+    }
+  }
+}
