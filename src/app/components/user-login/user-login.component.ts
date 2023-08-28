@@ -11,6 +11,8 @@ export class UserLoginComponent implements OnInit {
   constructor(private authService:UserAuthService) { }
   isUserLogged:boolean = false;
 
+
+
   login(){
     this.authService.login("user", 'password');
     this.isUserLogged = this.authService.isUserLogged
@@ -20,6 +22,8 @@ export class UserLoginComponent implements OnInit {
     this.isUserLogged = this.authService.isUserLogged
   }
   ngOnInit(): void {
-    this.isUserLogged = this.authService.isUserLogged
+    this.authService.isUSerLoggedSubject().subscribe((isLogged:boolean)=>{
+      this.isUserLogged = isLogged;
+    })
   }
 }
