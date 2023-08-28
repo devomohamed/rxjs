@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class UserAuthService {
     return (localStorage.getItem('token')) ? true : false;
   }
 
-  isUSerLoggedSubject(){
-    return this.isLoggedSubject
+  isUSerLoggedSubject():Observable<boolean>{
+    return this.isLoggedSubject.asObservable()
   }
 }
